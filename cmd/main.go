@@ -21,17 +21,17 @@ func main() {
 	// Metrics
 	metricsService := &service.MetricsService{CollectorURL: collectorURL}
 	metricsHandler := &api.MetricsHandler{Service: metricsService}
-	http.HandleFunc("/v1/intake/metrics", metricsHandler.HandleMetrics)
+	http.HandleFunc("/api/v1/intake/metrics", metricsHandler.HandleMetrics)
 
 	// Logs
 	logsService := &service.LogsService{CollectorURL: collectorURL}
 	logsHandler := &api.LogsHandler{Service: logsService}
-	http.HandleFunc("/v1/intake/logs", logsHandler.HandleLogs)
+	http.HandleFunc("/api/v1/intake/logs", logsHandler.HandleLogs)
 
 	// Traces
 	tracesService := &service.TracesService{CollectorURL: collectorURL}
 	tracesHandler := &api.TracesHandler{Service: tracesService}
-	http.HandleFunc("/v1/intake/traces", tracesHandler.HandleTraces)
+	http.HandleFunc("/api/v1/intake/traces", tracesHandler.HandleTraces)
 
 	port := os.Getenv("PORT")
 	if port == "" {
